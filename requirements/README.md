@@ -1,6 +1,6 @@
 # How to Organize Packages 
 
-Place reusable source code in this directory.
+Place requirements documents in this directory.
 
 ## Motivation
 

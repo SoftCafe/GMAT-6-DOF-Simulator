@@ -1,4 +1,4 @@
-# How to Organize Packages 
+# How to Organize Requirements
 
 Place requirements documents in this directory.
 

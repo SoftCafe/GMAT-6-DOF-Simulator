@@ -1,0 +1,131 @@
+
+         1) Colin H    :  a) We have a GitHub project (register w/ GitHub & Colin for access):
+                            https://github.com/a093130/GMAT-6-DOF-Simulator                       
+                            Wiki page can be found here:
+                            https://github.com/a093130/GMAT-6-DOF-Simulator/wiki
+                            You must register with GitHub for a free account and username
+                            then provide this info to Colin (chelms@airst.org) to gain
+                            access to the GMAT-6-DOF-Simulation project.
+                            Some of the specifications are in the Wiki.
+                         b) Exploring the Deep Space Gateway Mission Con-Ops.
+                         c) Explore a rendezvous Mission Ops with the Apophis asteroid.
+                         d) Continue finishing up "The Paper" (FTDP). 
+
+2) Daniel B    :    a) Continue testing GMAT interoperable compilation via cmake on Apple Mac. 
+                    b) Once satisfied, this can be ported to Linux (easily) and then Windows. 
+                    c) (optional) Is anyone else doing this (upgrading GNC or Attitude module)? Who are they? 
+                    d) Please update our Wiki with what you've learned re: cmake. A script would be nice.
+
+3) Don V        :   a) Coordination & Communication 
+                    b) Retro simulation text 
+
+4) Gage G     :     a) Look into 'Phase Plane Control' (Phase Space). 
+                    b) Work with Colin (chelms@airst.org) to determine & List Control Laws. 
+                    c) Determine a modular architecture w/i GMAT guidelines to generate the control laws. 
+
+5) Joe M       :    a) Colin has created a Wiki page within the GitHub account, here:
+                                                https://github.com/a093130/GMAT-6-DOF-Simulator/wiki
+                       There is GMAT documentation here that may answer the GMAT i/f questions:
+                       1) Configuring the Attitude (Spinner satellite):
+                       http://gmat.sourceforge.net/doc/nightly/html/ch03s05.html
+                       2) Configuring the Attitude (Fixed axis satellite)
+                       http://gmat.sourceforge.net/doc/nightly/html/ch04s04.html
+                       3) How to Add a new Attitude Parameter
+                       http://gmatcentral.org/display/GW/How+to+Add+a+new+Attitude+Parameter
+                       4) How to Add an Attitude Model to GMAT:
+                       http://gmatcentral.org/display/GW/How+to+Add+an+Attitude+Model
+
+                    b) Explore Android project.
+
+
+
+
+Absent: 
+6) Jonathan N  :    a) Retro simulation code. 
+
+
+Answered & unanswered GMAT interface questions that should be answered in our Wiki: 
+            What Attitude measurements are available? 
+            What coordinate systems? 
+            How to specify desired attitude? 
+            How do we (GMAT) know what the attitude is? 
+            How do we specify control torques to GMAT? 
+            What signals are supplied by GMAT and how?
+            What coordinates are they in?
+            What are the Libs and their Methods to change coordinate systems?
+
+
+Any Questions?
+
+
+
+Thanks, Fellows. 
+- Don V Black, PhD
+
+
+
+------------------------------------------------
+Begin Notes:
+
+Gage: 
+Determine model thruster model, control law for MatLab 
+
+Colin: 
+Issues on build references:
+
+Review attitude
+
+
+Dan -
+	
+	Build for Linux (service oriented)
+		Move build mechanisms toward package managers
+	
+	What do I do with GMAT or any of these other tools once I have it?
+		Examine GMAT from its tutorials:
+			User Guide: 
+				http://gmat.sourceforge.net/doc/nightly/html/index.html
+			
+				http://gmat.sourceforge.net/doc/nightly/html/pr01s02.html
+				http://gmat.sourceforge.net/doc/nightly/html/SimulatingAnOrbit.html
+				http://gmat.sourceforge.net/doc/nightly/html/Tut_ElectricPropulsion.html
+				http://gmat.sourceforge.net/docs/R2015a/html/Tutorials.html
+		Examine Colin's formulas
+			-- Review books on Kinematics (Orbital Mechanics)
+			--	https://en.wikipedia.org/wiki/Six_degrees_of_freedom
+			-- Review Guidance, Navigation, and Control Engineering Fundamentals
+		State Diagram
+			Dynamics -- torque ,  inertia --- 
+		control --  
+			fire thruster -- flight state,  
+			represents pointing --- kinematics
+	
+
+	Web page - 
+		http://test.airst.org
+		https://github.com/a093130/GMAT-6-DOF-Simulator
+		about us
+		
+		Pictures
+	Earned Value Management System
+		Project Open
+		https://nextcloud.com/trademarks/
+		http://www.project-open.com/en/install-ubuntu-xenial-xerus
+		http://www.project-open.com/index.html
+			
+	
+	What is GNC or Attitude?
+		--- Who is Wendy Shoan. Goddard Space Flight Center
+		--- Look at Authors of GMAT
+		--- Examine GMAT's source
+		--- Look up on Wikipedia and scholarship on subject
+		
+		
+	
+SlapLab Issue:
+		
+		
+10kW issue (power required to drive ion propulsion )
+
+
+Collaboration Question:

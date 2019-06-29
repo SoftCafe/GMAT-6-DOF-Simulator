@@ -1,0 +1,70 @@
+
+
+ cmake -G Xcode -B ../build 
+dyld: Symbol not found: __cg_jpeg_resync_to_restart
+  Referenced from: /System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
+  Expected in: /opt/local/lib/libJPEG.dylib
+ in /System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
+Abort trap: 6
+
+
+Solution A:
+
+cd /usr/local/lib
+rm libgif.dylib
+ln -s /System/Library/Frameworks/ImageIO.framework/Resources/libGIF.dylib libGIF.dylib
+rm libjpeg.dylib
+ln -s /System/Library/Frameworks/ImageIO.framework/Resources/libJPEG.dylib libJPEG.dylib
+rm libtiff.dylib
+ln -s /System/Library/Frameworks/ImageIO.framework/Resources/libTIFF.dylib libTIFF.dylib
+rm libpng.dylib
+ln -s /System/Library/Frameworks/ImageIO.framework/Resources/libPng.dylib libPng.dylib
+rm libGL.dylib
+ln -s /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL/libGL.dylib libGL.dylib
+
+
+
+
+bash.rc
+export DYLD_LIBRARY_PATH=/usr/lib/:$DYLD_LIBRARY_PATH
+
+
+Configure GMAT
+Set the following environment variable: 
+PLATFORM=mac
+Copy sf/trunk/build/macosx/BuildEnv.mk to sf/src
+Edit BuildEnv.mk to set the following variables: 
+TOP_DIR: path to the sf directory 
+WX_INSTALLED: path to the directory containing wx-config; usually this is the wxMac-2.8.12/build-gmat directory 
+WX_LIB_LOC: path to the directory containing the compiled wx libraries; usually this is the wxMac-2.8.12/build-gmat/lib directory 
+SPICE_DIR: path to the directory containing the cspice directory 
+F2C_LOC: path to the directory containing the f2c32 directory 
+PCRE_LIB_LOC: path to the PCRE library location; usually pcre-#.##/.libs
+
+
+
+export DYLD_LIBRARY_PATH=/opt/local/lib:$DYLD_LIBRARY_PATH
+export PLATFORM=mac
+export WX_LIB_LOC=/opt/local/lib
+export WX_INSTALLED=/opt/local
+export SPICE_DIR=/Users/danielbeatty/projects/BeanStalk/cubsat/Dependencies/CSPICE/cspice
+export F2C_LOC=/opt/local/f2c
+export PCRE_LIB_LOC=/opt/local
+
+
+Remove MacPorts:  Reference: https://guide.macports.org/chunked/installing.macports.uninstalling.html
+port -fp uninstall installed
+rm -rf \
+        /opt/local \
+        /Applications/DarwinPorts \
+        /Applications/MacPorts \
+        /Library/LaunchDaemons/org.macports.* \
+        /Library/Receipts/DarwinPorts*.pkg \
+        /Library/Receipts/MacPorts*.pkg \
+        /Library/StartupItems/DarwinPortsStartup \
+        /Library/Tcl/darwinports1.0 \
+        /Library/Tcl/macports1.0 \
+        ~/.macports
+		
+To build by Unix make file, try
+cmake -G 'Unix Makefiles' -B ../build

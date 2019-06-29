@@ -1,0 +1,8 @@
+
+https://sourceforge.net/p/gmat/git/ci/GMAT-R2018a/tarball
+
+
+https://sourceforge.net/p/gmat/git/ci/GMAT-R2017a/tree/application/README.txt
+https://sourceforge.net/p/gmat/git/ci/GMAT-R2018a/tree/application/README.txt#l105
+http://gmatcentral.org/display/GW/GMAT+CMake+Build+System
+

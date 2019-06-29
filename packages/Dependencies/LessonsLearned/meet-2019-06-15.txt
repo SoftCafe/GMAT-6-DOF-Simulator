@@ -1,0 +1,72 @@
+How to build the Open Source Project
+
+Rules and Procedures:
+	Wish to organize to reduce work
+	
+	Causal cave
+	
+	Long term goal. V/S 
+	
+		Connection to Aeronautical (orbital mechanics)
+			Sensors
+			mechanics
+			Control thereof
+			
+	Short term to get there:
+		Video production
+			Documentation
+			PR
+			
+		Study orbital mechanics
+		Produce distribution-build systems
+		
+		Funding - Cash flow
+		
+		Check on who is doing stuff.  
+			Who in NASA is following up on these products
+			Are they moving code into modern spaces
+			
+		What is GNC or Attitude?
+			--- Who is Wendy Shoan. Goddard Space Flight Center
+			--- Look at Authors of GMAT
+			--- Examine GMAT's source
+			--- Look up on Wikipedia and scholarship on subject
+			
+		With video production, work the GMAT examples.
+			--- Observe performance metrics
+			--- Find the bottle necks
+			--- How do we contruct basic models
+			--- How do we compound/ composite models
+			
+		Rebuilt experience with graphics modeling 
+			-- Rebuild experience with 3-D printing
+			-- Apply knowledge to small drones
+			
+		Exercises on Aerodynamics
+			- What am I solving on these equations
+			- Exercises on GMAT
+			** CFS -- CFE (Core Flight Software)
+					*** https://cfs.gsfc.nasa.gov
+					*** https://forum.nasaspaceflight.com/index.php?topic=43326.100
+			** Product for ARM + GPGPU
+			** Firefly + RocketLabs
+			
+		GMAT -- 6DOF 
+			What does a product in this picture look like?  
+		
+		Rebuild Virtual Mojave
+				https://itunes.apple.com/us/app/macos-mojave/id1398502828?ls=1&mt=12
+			
+		Bio-
+		
+Orbit Second Stage 
+	- Software ??  
+	
+	
+Cash Flow
+	??? How do make it ???
+	?  Stuff on iPhones. ???
+	
+	Unincorporated club
+		Limitation 
+			

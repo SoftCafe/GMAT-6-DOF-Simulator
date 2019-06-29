@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {0.1}Concurrent Engineering Before}{iii}{section.0.1}
+\contentsline {section}{\numberline {0.2}Package Managers}{iii}{section.0.2}
+\contentsline {section}{\numberline {0.3}Concurrent Engineering from the Garage to Post-Cloud}{iv}{section.0.3}
+\contentsline {part}{\partnumberline {I}Basic Build Dependencies}{1}{part.1}
+\contentsline {chapter}{\chapternumberline {1}Chapter 1 TOC entry}{3}{chapter.1}
+\contentsline {chapter}{\chapternumberline {2}Common Issues on Apple}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}System Dependencies}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}Installed Ports}{5}{section.2.2}
+\contentsline {subsection}{Remove MacPorts}{6}{section*.3}
+\contentsline {section}{\numberline {2.3}Homebrew issues}{7}{section.2.3}
+\contentsline {part}{\partnumberline {II}Memoir Supported Part II}{9}{part.2}
+\contentsline {chapter}{\chapternumberline {3}Another Part, Another Chapter}{11}{chapter.3}
+\contentsline {part}{\partnumberline {III}Appendices go here}{13}{part.3}
+\contentsline {appendix}{\chapternumberline {A}Why SOA Died in Concurrent Engineering}{15}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}Because I am appended}{17}{appendix.B}

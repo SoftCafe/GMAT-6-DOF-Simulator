@@ -1,0 +1,421 @@
+% !TEX TS-program = pdflatex
+%
+% Created by Daniel Beatty on 2019-05-17.
+% Copyright (c) 2019 All Night Star Party.
+\documentclass[
+  a4paper, % paper size.
+  11pt, % type size.
+  % article,
+  % oneside,  % all pages setup with the same margins.
+  twoside,    % margins change from recto to verso pages.
+  onecolumn,  % only one column of text on a page.
+  openright,  % each chapter will start on a recto page.
+  % openleft, % each chapter will start on a verso page.
+  % openany,  % chapters may start on either recto or verso pages.
+]{memoir}
+
+% Enable hyperlinking/hypertext and PDF metadata
+\usepackage{hyperref}
+\usepackage{listings}
+
+\hypersetup
+{
+  pdftitle   = {Lessons Learned From Building General Mission Analysis Tool With MacPorts and Mojave},
+  pdfauthor  = {Daniel Beatty},
+  pdfsubject = {Software Architecture Nuts and Bolts at the Build}
+}
+
+\title{Lessons Learned From Building General Mission Analysis Tool With MacPorts}
+\author{Daniel Beatty}
+
+\usepackage{lipsum} % to support fake lorem ipsum text
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\begin{abstract}
+%\lipsum[1-2]
+\end{abstract}
+\clearpage
+
+\tableofcontents*
+\clearpage
+
+\chapter*[Intro Heading]{Introduction}
+
+
+\section{Concurrent Engineering Before} % (fold)
+\label{sec:concurrent_engineering_before}
+In the beginning of concurrent engineering, a new concept of telecommuting took baby steps towards manufacturing things collaborately over distance.
+
+Another thing that benefits from the distributed object approach is tool, simulator, and in-loop design and testing.   These all benefit from an architecture that contain:
+\begin{itemize}
+
+	\item Agents
+
+	\item Common Agent Language(s)
+
+	\item Facilitators and translators
+
+	\item Brokers
+
+	\item Schedulers
+
+\end{itemize}
+
+
+These approaches supported development of jet engines and made it possible to get around proprietary issues.  This concept also supports cube satelite to ask for services during its design and test.  
+
+We propose a new model that can corridinate of data center cloud computing, garage start ups, and industrial facilities.  Each agent makes requests to local facilitators.  Facilitators talk with each other, enough to advertise services.  One service request can ask current star patterns and observations, like SDSS or other more recent acquistions.  Another request may ask GMAT to determine orbit maneuvers.  
+
+Some services might live literally in the cloud.  Others might live in a benefactor's garage. More should exist where we construct large parts. These service agents require architectures so that they may carry out their basic functions.
+
+  
+% section concurrent_engineering_before (end)
+
+\section{Package Managers} % (fold)
+\label{sec:package_managers}
+
+This work looks at how to build NASA's General Mission Analysis Tool (GMAT) in MacOS environment.  In this case, we configure for MacOS Mojave.  %All builds in an UNIX environment, in particular MacOS, have system development tools by which the core OS and libraries were constructed.
+Most UNIX environments depend on system development tools.  Apple prefers application exist as self-contained entities, except for system library frameworks.  Apple also prefers developer tools that incorporate signatures from the developer responsible.
+
+In many UNIX environments, developer communities have built package managers.  The Apple developer community also supports package managers for scientific and developer work.  Some of these management systems include MacPorts, Fink, and Homebrew.  MacPorts was  designed to facilitate open source projects beneficial for Apple developer, education, and scientific communities. 
+
+Linux administrators utilize and prefer this method to provide their systems' capabilities.  One can identify a distribution by its package distribution system.  The Application Package Tool (APT) supports the Debian/Ubunto Linux Distributions.   Yum favors Red Hat variants.  The package manager called Yet Another Support Tool (YaST) supports SuSE %Linux. Homebrew introduced its crowd funded package manager in 2013, and works together with other package managers.
+
+Later, other package distribution managers emerged to support families of projects.  For example, Homebrew emerged to support Ruby on Rails and the grid/cloud projects produced under this banner.  Homebrew and MacPorts share characteristics in common in terms of the Qt tools used to build cross platform tools like GMAT.  Also, Homebrew supports both Mac and Linux platforms.
+
+This work shares lessons learned from supporting these distribution managers.  GMAT is a capability to simulate the performance of an orbiting platform.  Provisioning these capabilities and integrating components served as a corner stone of concurrent engineering, especially within grid technology.  Now, we need GMAT agents and 
+%It is hoped that we build GMAT so that each package manager can simply distribute GMAT to the system in question.  The ability to support these platforms goes a long way to ensuring platform support and independence.
+
+% section package_managers (end)
+
+\section{Concurrent Engineering from the Garage to Post-Cloud} % (fold)
+\label{sec:concurrent_engineering_from_the_garage_to_post_cloud}
+
+% section concurrent_engineering_from_the_garage_to_post_cloud (end)
+
+
+\mainmatter
+
+
+
+
+\part{Basic Build Dependencies}
+
+\chapter[Chapter 1 TOC entry][Chapter One Heading]{What is a Package Manager?}
+With package managers, declaring dependencies matters.  There are many misconceptions amongst the layman and seasoned engineers.  
+
+The make and cmake systems are build systems, not dependency managers.  All build systems entail the ability to select system libraries and frameworks. 
+
+Some more sophisticated build systems that entail dependency management include Jenkins and XCode Build Server.  Microsoft also produces tools for Visual Studio in server capacities.  % Find out how similar these packages are to their UNIX counterparts.
+These build systems are designed to work with version control systems.  The premise in these cases is to build part if not whole systems based on changes to (VCS) repository.  These systems produce packages of developed code as products for distribution via the server.  These services also corridinate build services over a cluster thereby enhancing build efficiency.  
+
+It is not uncommon for package management services to use distributed build systems/services to provide the packages for their ``library of packages.''  It is also common to see package management services such as RPM, YaST, APT, MacPorts, or Homebrew to work with distributed build systems to ensure a known system during build.
+
+The inherent goal of such a package system is to provide configurations that work together.  Often, software packages depend on a common set of frameworks of libraries.  In some cases, a major operating system places these frameworks in known loacations.  The characteristics for a particular version of operating system then provide a baseline.  This baseline allows a developer to engineer small codebase contribution weilding common elements from other providers.  Most UNIX systems entail primary system libaries and a diverse cast of libraries provided by environment where they operate.  
+
+This work domain allows agencies and companies to specify service providing appliances for specific purposes.  For example, Red Hat and SuSE Linux have been a mainstay of basic server operations for years.  Scientific Linux inherits from its CERN and Fermi National Accelerator Laboratory (FNAL) contributions and focuses its packages on particle physics.  NASA spent fair amount of effort with virtual machine and container based cloud technologies to rapidly provision services for specific mission objectives.  % Is there any particular arrangement that seems preferred like Ubuntu/Debian kernels, Red Hat, SuSE, etc.? 
+
+\chapter{Common Issues on Apple}
+
+Homebrew and MacPorts run into similar issues in MacOS, typical past Mavericks.  The most significant issue entails overriding primary system libraries.  The LLVM compilers on Apple expect certain frameworks as dominant.  This includes libraries for image and video.  
+
+\section{System Dependencies} % (fold)
+\label{sec:system_dependencies}
+These libraries include dependencies upon dependencies:
+An error message such as `Solving some "Symbol not found" problems for libJPEG, libTIFF, libGL, libPng'. The script listed in listing \ref{lst:libraryReset}.  Alternatives also exist as shown 
+in \footnote{
+	https://www.wxwidgets.org/blog/2014/07/easier-way-to-avoid-dependencies-on/}
+
+\begin{tiny}
+
+	\begin{lstlisting}[caption={Resetting libraries to stock for LLVM-MacOS.}\label{lst:libraryReset}]
+#!/bin/sh
+ln -sf /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib /opt/local/lib/libGL.dylib
+
+ln -sf 
+/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib 
+	/opt/local/lib/libpng.dylib
+
+ln -sf
+/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib
+	/opt/local/lib/libtiff.dylib
+
+ln -sf /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib 
+	/opt/local/lib/libjpeg.dylib
+	\end{lstlisting}
+\end{tiny}
+
+% section system_dependencies (end)
+
+
+\section{Installed Ports} % (fold)
+\label{sec:installed_ports}
+
+
+The F2C found in MacPorts does not agree with NASA's GMAT either.  Thus, this is a dependency that must be satisfied.
+
+Another error that comes frequently is that cmake doesn't find wxWidgets, a cross-platform GUI library utilized by Python, Perl, Ruby, and its native C++.  MacPorts as of this writing is at version 3.1.2 (current release).  Therefore, we alter the CMakeList file at line 25 with this:
+
+\begin{tiny}
+	\begin{lstlisting}[caption={Where is cSPICE, starting settings in GMAT CMake}\label{lst:environmentVariablesGMAT-CSPICE-MacPorts}]
+INCLUDE_DIRECTORIES(/opt/local/include)
+set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
+set(CSPICE_INCLUDE_DIR /Users/danielbeatty/projects/BeanStalk/cubsat/Dependencies/CSPICE/cspice/include)
+set(CSPICE_DIR /Users/danielbeatty/projects/BeanStalk/cubsat/Dependencies/CSPICE/cspice)
+	\end{lstlisting}
+\end{tiny}
+
+
+Also, near line 123 is a portion searching for wxWidgets.  It doesn't seem to make sense why cmake on GMAT doesn't find wxWidgets, even with settings point at where MacPorts puts it shown in \ref{lst:environmentVariablesGMAT-wxWidgets-MacPorts}.
+
+Also, I put some debugging lines in the CMakeList file to hint at why wxWidgets and F2C were not so easily found. These are included here in listing \ref{lst:environmentVariablesGMAT-F2C-MacPorts}
+
+\begin{tiny}
+\begin{lstlisting}[caption={Where is wxWidgets, starting settings in GMAT CMake}\label{lst:environmentVariablesGMAT-wxWidgets-MacPorts}]
+/opt/local/Library/Frameworks/wxWidgets.framework/Versions/wxWidgets/3.1/bin)
+set(ENV{PATH} "${SYS_PATH}:${wxWidgets_ROOT_DIR}")
+set(wxWidgets_INCLUDE_DIRS 	
+	/opt/local/Library/Frameworks/wxWidgets.framework/Versions/wxWidgets/3.1/include)
+set(wxWidgets_LIBRARIES 	
+	/opt/local/Library/Frameworks/wxWidgets.framework/Versions/wxWidgets/3.1/lib)
+include_directories("${wxWidgets_ROOT_DIR}/include") # header files
+
+MESSAGE(STATUS "Place of wxWidgets_LIBRARIES = " ${wxWidgets_LIBRARIES} )
+MESSAGE(STATUS "Place of wxWidgets_INCLUDE_DIRS = " ${wxWidgets_INCLUDE_DIRS} )
+MESSAGE(STATUS "Place of wxWidgets_ROOT_DIR = " ${wxWidgets_ROOT_DIR} )
+	\end{lstlisting}
+\end{tiny}
+
+\begin{tiny}
+\begin{lstlisting}[caption={Where is F2C, starting settings in GMAT CMake}\label{lst:environmentVariablesGMAT-F2C-MacPorts}]
+
+# By default use the CSPICE version of F2C
+SET(F2C_DEPENDS_DIR ${CSPICE_INCLUDE_DIR})
+MESSAGE(STATUS "F2C Depends on CSPICE.  Is this the F2C required?" ${F2C_DEPENDS_DIR})
+
+# Search for F2C folder in default paths
+# User can change this via CMake GUI or command line
+FIND_PATH(F2C_DIR
+  NAMES f2c.h
+  PATHS 
+    ${F2C_DEPENDS_DIR}
+  DOC "Path to F2C directory (containing f2c.h)"
+  NO_DEFAULT_PATH
+  )
+  
+  MESSAGE(STATUS "F2C Directory variable set for " ${F2C_DIR})
+
+# Make sure F2C exists
+if(F2C_DIR)
+  MESSAGE(STATUS "Found F2C: " ${F2C_DIR})
+else()
+  MESSAGE(WARNING "F2C NOT FOUND. Set F2C_DIR to path to f2c.h and re-configure.")
+endif()	
+\end{lstlisting}	
+\end{tiny}
+
+% section installed_ports (end)
+
+
+
+\subsection{Remove MacPorts} % (fold)
+\label{sub:remove_macports}
+
+\begin{tiny}
+	\begin{lstlisting}
+
+ https://guide.macports.org/chunked/installing.macports.uninstalling.html
+port -fp uninstall installed
+rm -rf \
+        /opt/local \
+        /Applications/DarwinPorts \
+        /Applications/MacPorts \
+        /Library/LaunchDaemons/org.macports.* \
+        /Library/Receipts/DarwinPorts*.pkg \
+        /Library/Receipts/MacPorts*.pkg \
+        /Library/StartupItems/DarwinPortsStartup \
+        /Library/Tcl/darwinports1.0 \
+        /Library/Tcl/macports1.0 \
+        ~/.macports		
+	\end{lstlisting}
+\end{tiny}
+
+\begin{tiny}
+
+	\begin{lstlisting}[caption={Resetting libraries to stock for LLVM-MacOS.}\label{lst:libraryReset}]
+#!/bin/sh
+ln -sf /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib /usr/local/lib/libGL.dylib
+
+ln -sf 
+/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib 
+	/usr/local/lib/libpng.dylib
+
+ln -sf
+/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib
+	/usr/local/lib/libtiff.dylib
+
+ln -sf /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib 
+	/usr/local/lib/libjpeg.dylib
+	\end{lstlisting}
+\end{tiny}
+
+% subsection remove_macports (end)
+
+\section{Homebrew issues} % (fold)
+\label{sec:homebrew_issues}
+
+The first step in putting the system in a Homebrew environment is to install Homebrew.  Next, we install formulae that serve as dependencies for GMAT.  There are a few missing from Homebrew.  Notably, F2C does not appear in Homebrew's repository.
+
+\begin{lstlisting}
+	#!/bin/sh
+
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+	brew install cmake
+	brew install sqlite
+	brew install boost
+	brew install wxmac
+	brew install wxMaxima 
+	brew install wxpython
+	brew install cairo
+	brew install xerces-c
+
+	#port -f install f2c libf2c +x86_64 -d
+	brew install p7zip
+	brew install curl 
+
+	brew install pcre
+	brew install pcre2
+	brew install pcre++
+	# brew install ocaml-pcre
+	# port -f install cl-ppcre
+	
+\end{lstlisting}
+
+% section homebrew_issues (end)
+
+Among some of the reasons to consider Homebrew include Ruby on Rails and SwiftObjects.  If one considers the some of the Legacy approaches to GMAT, then methods that Service Oriented Architecture provides makes an opportunity to incorporate Concurrent Engineering.
+
+To make Homebrew a better fit for GMAT, we need to establish package management records, called {\textit formulae}, for the repository, called the {\textit Homebrew tap}.
+
+Amongst items not included is F2C. We can obtain this formula as shown in listing \ref{lst:F2C-Homebrew}.  This establishes the needed libraries.  So, this is where CSPICE, F2C, and general libraries are identified to the {\textit CMakeList.txt} file shown in listing \ref{lst:environmentVariablesGMAT-CSPICE-Homebre}.
+\begin{lstlisting}[caption={Setting up F2C in Homebrew Environment}\label{lst:F2C-Homebrew}]
+	 brew tap FranklinChen/tap
+	 brew install --HEAD franklinchen/tap/f2c
+\end{lstlisting}
+
+
+\begin{tiny}
+	\begin{lstlisting}[caption={Where is cSPICE, starting settings in GMAT CMake}\label{lst:environmentVariablesGMAT-CSPICE-Homebrew}]
+INCLUDE_DIRECTORIES(/opt/local/include)
+set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
+set(CSPICE_INCLUDE_DIR /Users/danielbeatty/projects/BeanStalk/cubsat/Dependencies/CSPICE/cspice/include)
+set(CSPICE_DIR /Users/danielbeatty/projects/BeanStalk/cubsat/Dependencies/CSPICE/cspice)
+	\end{lstlisting}
+\end{tiny}
+After doing this, the builder discovers that Xerces is not up to par under Homebrew.  So, we replace it with the source code from \footnote{http://xerces.apache.org/xerces-c}.  Now, GMAT configures correctly under CMake for Xcode, and Xcode builds all libraries and executables correctly.  The big thing that produces errors is the install script as it tries to copy dependencies into the stand alone application directory.  
+
+https://github.com/Homebrew/homebrew-php/issues/997
+
+https://github.com/OPM/homebrew-opm
+
+https://stackoverflow.com/questions/21577968/how-to-tell-if-homebrew-is-installed-on-mac-os-x
+
+
+\part{Memoir Supported Part II}
+
+\chapter{Another Part, Another Chapter}
+
+
+\appendix
+
+\part{Appendices go here}
+
+\chapter{American Institute for Research in Science and Technology} % (fold)
+\label{cha:airst}
+
+http://test.airst.org
+
+http://slaplab.softcafe.net
+
+https://github.com/a093130/GMAT-6-DOF-Simulator/wiki
+
+% chapter airst (end)
+
+\chapter{GMAT Official Guidance} % (fold)
+\label{cha:gmat_official_guidance}
+
+https://e-gmat.com/blogs/gmat-official-guide-2019-vs-gmat-og-2018-review/
+
+http://gmat.sourceforge.net/doc/nightly/html/WelcomeToGmat.html
+
+% chapter gmat_official_guidance (end)
+
+\chapter{Installing Mojave} % (fold)
+\label{cha:installing_mojave}
+
+\footnote{https://www.itechtics.com/macos-mojave-10-14/}
+\footnote{http://osxdaily.com/2018/09/29/download-full-macos-mojave-installer/}
+
+% chapter installing_mojave (end)
+
+\chapter{Why SOA Died in Concurrent Engineering}
+
+
+
+\footnote{https://en.wikipedia.org/wiki/Service-oriented\_architecture}
+\footnote{http://jpmorgenthal.com/2009/06/19/the-reason-soa-isnt-delivering-sustainable-software/}
+\footnote{https://www.zdnet.com/article/bray-soa-too-complex-just-vendor-bs/}
+
+\footnote{https://pdfs.semanticscholar.org/c8f7/66439171e3d1a30484f87c8213874c82056d.pdf}
+
+https://pdfs.semanticscholar.org/ca69/bf0e9bf92e0e58c6bddf681b16e79b9b5f9a.pdf
+
+https://www.researchgate.net/publication/260309945_A_State_of_the_Art_Report_on_Concurrent_Engineering
+
+https://www.researchgate.net/profile/Josip_Stjepandic/publication/285334294_Network-centric_operations_during_transition_in_global_enterprise/links/565f5c6808ae4988a7bed4da.pdf
+
+\section{IEEE Research Papers} % (fold)
+\label{sec:ieee_research_papers}
+
+https://ieeexplore.ieee.org/document/383563
+
+https://ieeexplore.ieee.org/document/383571
+
+https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=concurrent%20engineering%20agent
+
+https://ieeexplore.ieee.org/document/4686420
+
+http://cs.emis.de/LNI/Proceedings/Proceedings56/GI-Proceedings.56-16.pdf
+
+https://ieeexplore.ieee.org/abstract/document/4686521
+
+http://sorcersoft.org/publications/papers/2008/0-87849-376-x_717.pdf
+
+http://cs.emis.de/LNI/Proceedings/Proceedings56/GI-Proceedings.56-16.pdf
+
+https://ieeexplore.ieee.org/abstract/document/4686521
+
+
+
+% section ieee_research_papers (end)
+
+\chapter{Because I am appended}
+
+
+
+\backmatter
+
+% Bibliography goes here
+% ----------------------
+
+% \bibliographystyle{ieeetr}
+% \bibliography{ref}
+
+\end{document}

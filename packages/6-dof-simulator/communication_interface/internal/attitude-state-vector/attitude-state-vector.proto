@@ -1,0 +1,83 @@
+message AttitudeStateVector {
+    required string ATTITUDE_DISPLAY_STATE_TYPE = 1;
+    required string ATTITUDE_RATE_DISPLAY_STATE_TYPE = 2;
+    required string REFERENCE_COORDINATE_SYSTEM = 3;
+    required string EPOCH = 4;
+    required string Q_1 = 5;
+    required string Q_2 = 6;
+    required string Q_3 = 7;
+    required string Q_4 = 8;
+    required string EULER_ANGLE_SEQUENCE = 9;
+    required string EULER_ANGLE_1 = 10;
+    required string EULER_ANGLE_2 = 11;
+    required string EULER_ANGLE_3 = 12;
+    required string DCM_11 = 13;
+    required string DCM_12 = 14;
+    required string DCM_13 = 15;
+    required string DCM_21 = 16;
+    required string DCM_22 = 17;
+    required string DCM_23 = 18;
+    required string DCM_31 = 19;
+    required string DCM_32 = 20;
+    required string DCM_33 = 21;
+    required string MRP_1 = 22;    
+    required string MRP_2 = 23;
+    required string MRP_3 = 24;
+    required string EULER_ANGLE_RATE_1 = 25;
+    required string EULER_ANGLE_RATE_2 = 26;
+    required string EULER_ANGLE_RATE_3 = 27;
+    required string ANGULAR_VELOCITY_X = 28;
+    required string ANGULAR_VELOCITY_Y = 29;
+    required string ANGULAR_VELOCITY_Z = 30;  
+
+    // Add additional CSFixed fields here
+    // none at this time
+    // Add additional Spinner fields here
+    // none at this time
+    // Add additional SpiceAttitude fields here
+    // none at this time
+    // Add additional PrecessingSpinner fields here
+
+    required string NUTATION_REFERENCE_VECTOR_X = 31;
+    required string NUTATION_REFERENCE_VECTOR_Y = 32;
+    required string NUTATION_REFERENCE_VECTOR_Z = 33;
+    required string BODY_SPIN_AXIS_X = 34;
+    required string BODY_SPIN_AXIS_Y = 35;
+    required string BODY_SPIN_AXIS_Z = 36;
+    required string INITIAL_PRECESSION_ANGLE = 37;
+    required string PRECESSION_RATE = 38;
+    required string NUTATION_ANGLE = 39;
+    required string INITIAL_SPIN_ANGLE = 40;
+    required string SPIN_RATE = 41;
+
+    // Add additional NadirPointing fields here
+
+    required string ATTITUDE_REFERENCE_BODY = 42;
+    required string ATTITUDE_CONSTRAINT_TYPE = 43;
+    required string BODY_ALIGNMENT_VECTOR_X = 44;
+    required string BODY_ALIGNMENT_VECTOR_Y = 45;
+    required string BODY_ALIGNMENT_VECTOR_Z = 46;
+    required string BODY_CONSTRAINT_VECTOR_X = 47;
+    required string BODY_CONSTRAINT_VECTOR_Y = 48;
+    required string BODY_CONSTRAINT_VECTOR_Z = 49;
+
+    // Add additional CCSDS-AEM fields here
+
+    required string AEM_FILE_NAME = 50;
+    required string AttitudeParamCount = 51;
+}
+   
+   enum OtherReps
+   {
+       EULER_SEQUENCE_LIST = 7000,
+       EULER_SEQUENCE,
+       EULER_ANGLES,               // degrees
+       EULER_ANGLE_RATES,          // degrees/second
+       QUATERNION,
+       MRPS,					   // Dunn Added
+       DIRECTION_COSINE_MATRIX,
+       ANGULAR_VELOCITY,           // degrees/second
+       BODY_SPIN_AXIS,             // PrecessingSpinner
+       NUTATION_REFERENCE_VECTOR,  // PrecessingSpinner
+       EndOtherReps
+   };

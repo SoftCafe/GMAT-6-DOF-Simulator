@@ -1,0 +1,19 @@
+message OtherReps {
+    required string EULER_SEQUENCE_LIST = 1;
+    required string EULER_SEQUENCE = 2;
+    // degrees
+    required string EULER_ANGLES = 3;               
+    // degrees/second
+    required string EULER_ANGLE_RATES = 4;          
+    required string QUATERNION = 5;
+    // Dunn Added
+    required string MRPS = 6;					   
+    required string DIRECTION_COSINE_MATRIX = 7;
+    // degrees/second
+    required string ANGULAR_VELOCITY = 8;           
+    // PrecessingSpinner
+    required string BODY_SPIN_AXIS = 9;             
+    // PrecessingSpinner
+    required string NUTATION_REFERENCE_VECTOR = 10;  
+    required string EndOtherReps = 11;
+};

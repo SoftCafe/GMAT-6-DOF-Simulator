@@ -1,6 +1,6 @@
 import unittest
 from hypothesis import note, settings
-from hypothesis.stateful import RuleBasedStateMachine, rule, invariant
+from hypothesis.stateful import RuleBasedStateMachine, rule, invariant, precondition
 import matlab.engine
 
 class AttitudeActuatorModelProperties(RuleBasedStateMachine):
@@ -18,13 +18,20 @@ class AttitudeActuatorModelProperties(RuleBasedStateMachine):
     def __enter__(self):
         self.engine = matlab.engine.start_matlab()
 
-    def __exit__(self):
+    def __exit__(self, exception_type, exception_value, traceback):
         self.engine.quit()
 
     @rule()
     @precondition(lambda self: self.phi < 360 )
     def doSomething(self):
-        i, j, k, phi, theta, kappa = self.engine.doSomething()
+        i, j, k, phi, theta, kappa = self.engine.doSomething(
+            self.i,
+            self.j,
+            self.k,
+            self.phi,
+            self.theta,
+            self.kappa)
+
         self.i = i
         self.j = j
         self.k = k
@@ -34,7 +41,7 @@ class AttitudeActuatorModelProperties(RuleBasedStateMachine):
 
     @invariant()
     def quaternion_invariant_extended_kalman_filtering_for_spacecraft_attitude_estimation(self):
-        assert true
+        assert True
 
 
 TestTrees = AttitudeActuatorModelProperties.TestCase

@@ -5,12 +5,12 @@ import matlab.engine
 
 class AttitudeActuatorModelProperties(RuleBasedStateMachine):
     engine = None
-    phi = 0
-    theta = 0
-    kappa = 0
     i = 0
     j = 0
     k = 0
+    phi = 0
+    theta = 0
+    kappa = 0
 
     def __init__(self):
         super(AttitudeActuatorModelProperties, self).__init__()
@@ -24,7 +24,13 @@ class AttitudeActuatorModelProperties(RuleBasedStateMachine):
     @rule()
     @precondition(lambda self: self.phi < 360 )
     def doSomething(self):
-        self.engine.doSomething()
+        i, j, k, phi, theta, kappa = self.engine.doSomething()
+        self.i = i
+        self.j = j
+        self.k = k
+        self.phi = phi
+        self.theta = theta
+        self.kappa = kappa
 
     @invariant()
     def quaternion_invariant_extended_kalman_filtering_for_spacecraft_attitude_estimation(self):

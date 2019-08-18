@@ -64,15 +64,48 @@ class Simulation(RuleBasedStateMachine):
         super(Simulation, self).__init__()
 
     def __enter__(self):
-        self.engine = matlab.engine.start_matlab()
+        self.matlab_engine = matlab.engine.start_matlab()
 
     def __exit__(self, exception_type, exception_value, traceback):
-        self.engine.quit()
+        self.matlab_engine.quit()
 
     @rule()
     @precondition(lambda self: self.simulation_state == "RUNNING_CONTROL_LAWS" )
-    def control_Law_action1(self):
-        pass
+    def control_law_action1(self):
+        # Fake action
+        new_state = self.matlab_engine.action1(
+            self.J_1,
+            self.J_2,
+            self.J_3,
+            self.J_T,
+
+            self.omega_1,
+            self.omega_2,
+            self.omega_3,
+            self.omega_T,
+            
+            self.T1_ext,
+            self.T2_ext,
+            self.T3_ext,
+            self.T_ext,
+
+            self.u_1,
+            self.u_2,
+            self.u_3
+        )
+
+        # Fake Postconditions
+        assert new_state.J_1 > 0
+        assert new_state.J_2 > 0
+        assert new_state.J_3 > 0
+        assert new_state.J_T > 0
+
+        # Update the system state
+        self.J_1 = new_state.J_1
+        self.J_2 = new_state.J_2
+        self.J_3 = new_state.J_3
+        self.J_T = new_state.J_T
+
 
     @rule()
     @precondition(lambda self: self.simulation_state == "RUNNING_ATTITUDE_DETERMINATION" )
@@ -85,6 +118,7 @@ class Simulation(RuleBasedStateMachine):
 
     @invariant()
     def quaternion_invariant_extended_kalman_filtering_for_spacecraft_attitude_estimation(self):
+        # Fake invariant check
         assert True
 
 

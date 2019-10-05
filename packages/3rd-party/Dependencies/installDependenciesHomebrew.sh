@@ -13,6 +13,11 @@ brew install cairo
 brew install xerces-c
 
 #port -f install f2c libf2c +x86_64 -d
+
+
+#port -f install f2c libf2c +x86_64 -d
+./buildLibf2c.sh
+
 brew install p7zip
 brew install curl 
 

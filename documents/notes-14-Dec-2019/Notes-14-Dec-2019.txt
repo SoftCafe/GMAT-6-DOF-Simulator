@@ -1,0 +1,22 @@
+Don is working what our little simulator is supposed to do and the sysstems invovlved.
+I shall finish the build script for Microsoft.
+	We need a script that work with all three major platforms and utilize generally the same code.
+	We also need to figure out a more consistent way of acquire external components from their original source so their updates become our updates.
+	Test GMAT's Central Recipe
+		Does it work as they describe it?
+			--  http://gmatcentral.org/display/DOC/GMAT+BUILD+SCRIPT
+		List problems
+		If it doesn't work, what is the fix?
+	Why should we switch from wxWidgets?
+		OpenGL to webGL
+		wxWidgets to Web Services
+		Answer the question: WHY?
+	
+	Use the model from Don to show why this is a useful product, and therefore make the sale for a product to solve a SBIR and other calls for proposals?
+	
+	
+	Hall Effect Thruster 
+		- plasma device
+		- throws out molecules or some other efficiency.
+		
+

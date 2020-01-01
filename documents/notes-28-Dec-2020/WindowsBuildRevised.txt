@@ -1,0 +1,62 @@
+There are technologies that GMAT 2012 through 2017 that GMAT R2018 does not utilize.  Also, there are technologies that were required in Windows 7 and earlier to make it compatible with UNIX (including macOS) and Linux systems. 
+
+Microsoft has been pushing to go the other way around and this has consequences.  The old Cygwin and other methods of imposing POSIX conditions don't have the same motivations under Windows 10.  So, how do we move toward a GMAT built for Windows 10, the only Windows platform supported by Microsoft in 2020? 
+
+Note, the GMAT central instructions reference a batch script intended to load each of the dependencies.  To be fair, a UNIX script and Microsoft equivalent would make sense set up the depends directory.  The arguments seem to be what the UNIX side would encorporate into environment variables to such a script.  These variables included:
+	- intended GMAT home
+	- SVN/GIT repository (specification for which)
+	- location of seven zip (a well known zip encode/decode application)
+	- Visual Studio version (or simply development enviroment + version (possibly compiler + version))
+	- Compiler path
+	- Latest release (yes / no)
+
+
+Pre-requisits:
+Install Windows 10
+Install any Information Security hardware and software required to meet IT requirements (it is still Microsoft).
+Install Microsoft Visual Studio (currently 2019 is available from Microsoft for both Windows and Mac.)
+https://visualstudio.microsoft.com
+
+
+In Visual Studio, we need SVN and VS Development for Linux.
+
+While VS is downloading and / or installing, it is a good time to acquire a few of the other dependencies not included with the OS or developer tools.  
+
+You want to acquire the Windows version of CSPICE.  This is available at:
+https://naif.jpl.nasa.gov/naif/toolkit_C_PC_Windows_VisualC_64bit.html
+
+There are more packages that we need to support cross platform development.  
+
+These utilities exist to help acquire needed dependencies.
+wget
+http://ftp.gnu.org/gnu/wget/
+
+7-Zip
+http://www.7-zip.org/download.html
+
+
+These packages are known dependencies that GMAT utilizes as part of the system.  Note, GMAT's CMAKE utility configures without these on other systems.
+TSPlot
+https://sourceforge.net/p/tsplot/code/HEAD/tree/
+
+OpenGL
+http://www.opengl.org/resources/
+
+PCRE
+http://www.pcre.org
+
+Standards of Fundamental Astronomy (SoFA)
+http://www.iausofa.org/2012_0301_C/sofa_c_a.zip
+http://www.iausofa.org
+
+
+For all of these dependencies, the macOS approach is to build an app with a database.  That database tracks the main product and the dependencies.  The app supplies results from the developer tools to the quality of the build.  Like the original Unix and Windows scripts, the Mac app should call SVN/GIT repositories to provide the correct version.  Like the original scripts, the app should supply environment variables to ensure a connection between each dependency and the product.  The question is, can we build such a product that will work across these platforms that does the same thing?  In many cases, the configuration for Jenkins serves this purpose.  Although, it might be handy to have a database of known configurations (success and failure) to save users time.
+
+
+We hope to revise CSPICE to at least utilize CMAKE.  It is out humble opinion that environment variables ensure a common arrangements so that each dependency can be load from independent sources and still combine reliably for all supported platforms.  CSPICE uses a script in both the Windows and UNIX/Linux environments that compiles the product.  Nextstep and Apple developers would prefer that each dependency project package link with the product package to keep the entire development process clean.  The UNIX/Linux side might arive at a standardized arrangement.  Windows remains to be seen.
+
+https://naif.jpl.nasa.gov/naif/toolkit_C_PC_Windows_VisualC_64bit.html
+
+We recommend merging the CSPICE into a CMAKE arrangement.  We would also like to have new pieces designed to tools that can test the original purpose of CSPICE and migrate this data into a database type device.  
+
+For now, we can build CSPICE using the Visual Studio Command Prompt.  There is such an application.  We launch it from the Start menu.  Next, we change directories to the home of the CPSICE directory.  Next, we run the makeall batch file.  Note, this will not work under the convential command prompt.

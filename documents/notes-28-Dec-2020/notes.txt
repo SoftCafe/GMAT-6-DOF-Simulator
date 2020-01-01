@@ -1,0 +1,21 @@
+
+	
+	
+Minimum Viable Product (MVP)
+
+So what is the product
+
+JIRA/Atlasian 
+
+
+
+Digital Ocean
+https://www.digitalocean.com
+
+JIRA
+	email Jonathan emails that we use with JIRA
+	Test JIRA for project management
+	
+	Digital Ocean supposedly makes "droplets" as a backup mechanism
+	
+	

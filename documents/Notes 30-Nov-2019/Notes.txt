@@ -1,0 +1,92 @@
+Cesium Ion and GMAT
+
+Build a custom visualization frontend of top of Cesium Ion
+Build a 6 DOF simulator on top of GMAT
+
+SPICE database 
+	- NASA's CSPICE format
+	
+	
+	
+Gage started work on 	
+Direct Transcription / Collocation 
+GTO/GEO GPOPS-II for doing direct transcription
+https://en.wikipedia.org/wiki/GPOPS-II
+
+He is next working on Matlab/Simulink versions of GPOPS-II
+?  Will he need some help. ?
+
+
+
+Thought, do a Sci Tools understand analysis of GMAT GUI to establish interface actions.
+
+	Obtain SPICE/CSPICE format
+
+	Devise transformation of CSPICE
+
+	Data flow diagrams
+	Class Diagrams
+	Block diagrams
+	Dependencies analysis
+	
+	Eventual focus needs to go toward prioritary algorithms
+	
+	Examples from GMAT Central:
+		http://li394-117.members.linode.com:8090/display/GW/Architectural+Specification
+		http://li394-117.members.linode.com:8090/display/GW/Design+Documents
+		http://li394-117.members.linode.com:8090/display/GW/Compiling
+		
+		http://li394-117.members.linode.com:8090/pages/viewpage.action?pageId=4456633
+		http://li394-117.members.linode.com:8090/pages/viewpage.action?pageId=4456633
+		
+
+
+Four slide presentation of wavelets
+
+SourceForge migration from github repo.
+
+Double check GMAT build for Windows
+	 Why Win7
+	 Why WinX
+Block diagram of dependencies:
+
+The Win7 we have is 32-bit.  Adjust VM to run as a 32-bit machine.
+
+
+??? The contractor ??? What did they do?  Some kind of optimization 
+
+
+
+Don issue:
+Transcription and Collocation for proprietary A-to-B orbital/trajectory optimization algorithm.
+psuedo-geodesic.
+Why: Continuous acceleration by plasma/ion propulsion
+
+
+
+
+
+Jeff made a new attitude model for 6DOF..  
+Runs on his version of OSX 
+GMAT central to add attitude control module
+
+The space craft in the simulation "knows" where it is.
+It has the location and time information in the simulation object
+? How do the propergators interact with the "spacecraft" objects.
+
+Contributing to Development
+You can add new features to GMAT and see those features adopted by the community.  Our process for contributing code to GMAT is covered in the Governance pages.   You don't need to be an expert in C++ to contribute to GMAT functionality.  You can
+Write engineering specs
+Write prototypes (we rely heavily on MATLAB prototypes)
+Review requirements and design documents
+Fix bugs
+Improve existing features
+Add a new features
+For more information see the Development launchpad.
+
+CFE/CFS?  Could we stick the models into the Sat itself.  A hardware in the loop would to connect devices and their simulations.
+
+Is there a generic attitude model we can apply for GMAT?   Can a "text" file we can make that will make the correct model of the space-craft for GMAT to simulate this work.
+
+http://li394-117.members.linode.com:8090/display/GW/Development
+

@@ -1,0 +1,57 @@
+
+
+From baseline Windows:
+
+Assumed:
+	System is set up
+		AV installed and working
+		Security software working
+	Visual Studio 2019
+	GIT
+	SVN
+	
+	git our repository:
+	
+
+CSPICE has its install by csh.  Question: How do we do csh in MS Windows 10?
+Cygwin under Windows 10 
+
+GMAT central says that wget is a needed pre-requesite for GMAT.
+This is typically a Unix thing, but there are web sites for Windows 10:
+			https://builtvisible.com/download-your-website-with-wget/
+			https://eternallybored.org/misc/wget/
+		These provide a set of binaries for Windows 10 
+		How do we test these?
+			Power Shell under Windows 10.
+			So, we click on the Windows start menu and run cmd to Get Command Prompt.
+The build references at http://gmatcentral.org/display/DOC/GMAT+BUILD+SCRIPT
+http://www.opengl.org/resources/
+
+Standards of Fundamental Astronomy Dependencies.
+http://www.iausofa.org/2012_0301_C/sofa_c_a.zip
+
+One thing I prefer is to have the dependencies in github or something appropriate.
+The idea is that Linux and MacOS Jenkins builds on their dependencies.
+As a matter of fact, we want Jenkins recipies for each platform so that a change to a developer's work initates a build and we can find out whether the developer broke the product.
+
+So, do we make file system links to enable Windows to find the dependencies. 
+
+
+tsPlot, how do we acquire this dependency?
+
+?  How to install wxWidgets on Windows 10?
+
+References:
+	https://wiki.wxwidgets.org/Microsoft_Visual_C%2B%2B_Guide
+	https://forums.wxwidgets.org/viewtopic.php?t=45796
+	
+Note, there are is a zip version of CSPICE to provide the batch file to make it.  This is something that makes no sense.  Why didn't they just make this a little more universal?  That is what CMAKE is for.  
+
+The cavaet to make CSPICE is on Microsoft is that you have to use the "Visual Studio Command Line."  This is apparently different from the main power shell.  What environment variables are being set, I don't know.
+
+None the less in the Visual Studio Command Line, we can change directory to home of CSPICE (the depends directory in GMAT.)  At this point, we can issue the makeall.bat command and it will run.  
+
+In my humble opinion, this is another reason to adjust CSPICE to use CMAKE at first.  Later, I would like to introduce an ORM to the architecture.
+
+Even so, Visual Studio's CMAKE does not find things as easily as its Mac and Linux counter-parts.  None the less, we need some kind of "standard" mechansm so that builds occur in an engine like Jenkins or equivalent on Windows, Mac, and Linux consistently.   
+

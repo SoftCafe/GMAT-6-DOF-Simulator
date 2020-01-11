@@ -1,0 +1,8 @@
+This is still one big issue as the CMake list file for GMAT is intricate and makes cross platform development more difficult.
+
+There are some web sites that come in handy for this kind of work.
+
+https://cmake.org/runningcmake/
+
+Google: "gcc microsoft windows 10"
+https://www.youtube.com/watch?v=78j-Gvx2MP0

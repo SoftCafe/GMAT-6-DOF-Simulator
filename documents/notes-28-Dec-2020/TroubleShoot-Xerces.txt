@@ -1,0 +1,9 @@
+I ran into some trouble with Xerces-C under Windows 10.   There are few items about Visual Studio that I need to brush up on to connect projects the way VS expects them.    It would be helpful to have some guides for interfacing enterprise build systems like Jenkins with VS, or Microsoft's equivalent for Visual Studio Server.
+
+For Xerces, I first ran into trouble with link errors:
+CMake does tell VS to build the library in question.  But, it fails to make the connections for linking.
+
+Thus a Google search for "cannot open file 'src xerces-c_3d.lib' xerces visual studio" reveals some useful details about Xerces.
+
+
+https://sourceforge.net/p/xqilla/mailman/xqilla-user/?viewmonth=200901&page=1

@@ -9,9 +9,10 @@ from datetime import datetime
 import random
 
 client = Client(
-        service_name="6dof_simulation")
+        service_name="6dof_simulation",
+        debug = False)
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_attitude_sensor(token):
     with elasticapm.capture_span('attitude_sensor_log', labels=token):
         pass
@@ -19,13 +20,15 @@ def handle_attitude_sensor(token):
     return {
         "name": "attitude_sensor_done",
         "payload": {
-            "attitude_sensor_log_attribute1": str(random.random()),
-            "attitude_sensor_log_attribute2": str(random.random()),
-            "attitude_sensor_log_attribute3": str(random.random()),
+            "attitude_sensor": {
+                "attribute1": str(random.random()),
+                "attribute2": str(random.random()),
+                "attribute3": str(random.random()),
+            }
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_attitude_sensor_drivers(token):
     with elasticapm.capture_span('attitude_sensor_drivers_log', labels=token):
         pass
@@ -33,13 +36,15 @@ def handle_attitude_sensor_drivers(token):
     return {
         "name": "attitude_sensor_driver_done",
         "payload": {
-            "attitude_sensor_drivers_log_attribute1": str(random.random()),
-            "attitude_sensor_drivers_log_attribute2": str(random.random()),
-            "attitude_sensor_drivers_log_attribute3": str(random.random()),
+            "attitude_sensor_drivers": {
+                "attribute1": str(random.random()),
+                "attribute2": str(random.random()),
+                "attribute3": str(random.random()),
+            }
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_attitude_sensor_data_integration(token):
     with elasticapm.capture_span('attitude_sensor_data_integration_log', labels=token):
         pass
@@ -53,7 +58,7 @@ def handle_attitude_sensor_data_integration(token):
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_command_and_control(token):
     with elasticapm.capture_span('command_and_control_log', labels=token):
         pass
@@ -67,7 +72,7 @@ def handle_command_and_control(token):
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_high_level_attitude_command_integrator(token):
     with elasticapm.capture_span('high_level_attitude_command_log', labels=token):
         pass
@@ -81,7 +86,7 @@ def handle_high_level_attitude_command_integrator(token):
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_attitude_actuator_drivers(token):
     with elasticapm.capture_span('attitude_actuator_driver_log', labels=token):
         pass
@@ -95,7 +100,7 @@ def handle_attitude_actuator_drivers(token):
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def handle_attitude_actuator_controller(token):
     with elasticapm.capture_span('attitude_actuator_contoller_log', labels=token):
         pass
@@ -109,7 +114,7 @@ def handle_attitude_actuator_controller(token):
         }
     }
 
-@elasticapm.capture_span()
+#@elasticapm.capture_span()
 def run_simulation():
 
     task_for_token = {
@@ -124,10 +129,11 @@ def run_simulation():
     }
 
     now = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+    transaction_type = "epoch-"+now
 
     for i in range(10):
         client.begin_transaction(
-                transaction_type="epoch-"+now)
+                transaction_type=transaction_type)
 
         token = {
             "name": "start",
@@ -144,7 +150,12 @@ def run_simulation():
 
         client.end_transaction("epoch-" + str(i))
 
-    print("done")
+ 
+    url = "http://localhost:5601/app/apm#/services/6dof_simulation/transactions?transactionType=" + transaction_type
+    import webbrowser
+    webbrowser.open(url, new=2)
+
+    print("url: ", url)
 
 
 run_simulation()
